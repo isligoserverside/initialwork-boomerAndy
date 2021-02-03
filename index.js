@@ -30,28 +30,6 @@ var data = {"foil" : { "name": "foil",
 
 
 
-//  /VAR for foil
-var foil = { "name": "foil",
-         "dob": "01/01/1998",
-         "imageurl": "/images/foilimage1.jpg",
-         "hobbies": ["Jokes", "Gags", "Stand up"]}
- 
-
-        
-//  /VAR for arms
-var arms = { "name": "arms",
-         "dob": "02/02/1998",
-        "imageurl": "images/armsimage1.jpg",
-        "hobbies": ["surfing", "food", "Stand up"]}
-
-
-//  /VAR for hog
-var hog = { "name": "hog",
-         /* "dob": "03/03/1998", */
-        "imageurl": "images/hogimage1.jpg",
-        "hobbies": ["gaming", "memes", "Stand up"]}
-
-        
 //  /Foil
 app.get('/foil', (req,res) =>
        res.render('person', {person: foil} ))
