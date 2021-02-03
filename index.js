@@ -32,15 +32,16 @@ var data = {"foil" : { "name": "foil",
 
 //  /Foil
 app.get('/foil', (req,res) =>
-       res.render('person', {person: foil} ))
+       res.render('person', {person: data.foil} ))
+
 
 //  /Arms
 app.get('/arms', (req,res) =>
-        res.render('person', {person: arms} ))
+        res.render('person', {person: data.arms} ))
 
 //  /hog
 app.get('/hog', (req,res) =>
-        res.render('person', {person: hog} ))
+        res.render('person', {person: data.hog} ))
 // use view engine and file home as default route.
 app.get('/', function (req, res) {
     res.render('home');
