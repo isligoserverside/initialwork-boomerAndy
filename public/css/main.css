@@ -1,0 +1,11 @@
+body {
+    font-family: calibri; }
+  
+  h1 {
+    font-size: 72px;
+  background: -webkit-linear-gradient(#ff218e, #fcd800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+
+    
