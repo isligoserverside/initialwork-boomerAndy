@@ -29,7 +29,6 @@ var data = {"foil" : { "name": "foil",
 
 
 
-
 //  /Foil
 app.get('/foil', (req,res) =>
        res.render('person', {person: data.foil} ))
@@ -42,10 +41,18 @@ app.get('/arms', (req,res) =>
 //  /hog
 app.get('/hog', (req,res) =>
         res.render('person', {person: data.hog} ))
+
+// /task 4, personlist
+app.get('/personlist', (req,res) =>
+    res.render('personlist', { personlist: data }))
+
+
 // use view engine and file home as default route.
 app.get('/', function (req, res) {
     res.render('home');
 });
+
+
 
 // use view engine and display about
 app.get('/about', function (req, res) {
