@@ -7,14 +7,14 @@ app.use(express.static('public'));
  */
 
  //Worksheet 2
- 
+
 // set up handlebars view engine
 var handlebars = require('express-handlebars')
 .create({ defaultLayout:'main' });
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-//  Worksheet 3 01/2/2021
+//  Worksheet 3 and 4 03/02/2021
 var data = {"foil" : { "name": "foil",
          "dob": "01/01/1998",
         "imageurl": "/images/foilimage1.jpg",
