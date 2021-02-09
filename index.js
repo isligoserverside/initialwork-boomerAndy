@@ -34,6 +34,10 @@ app.get('/personlist/:name', (req, res) => {
     res.render('person', { person: data[name] })
 })
 
+app.get('/personlist', (req,res) =>
+    res.render('personlist', { personlist: data }))
+
+
 
 // /task 4, personlist
 app.get('/personlist', (req,res) =>
