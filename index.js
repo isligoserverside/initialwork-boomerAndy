@@ -28,19 +28,12 @@ var data = {"foil" : { "name": "foil",
         "imageurl": "/images/hogimage1.jpg"} }
 
 
+// Worksheet 5a
+app.get('/personlist/:name', (req, res) => {
+    var name = req.params.name;
+    res.render('person', { person: data[name] })
+})
 
-//  /Foil
-app.get('/foil', (req,res) =>
-       res.render('person', {person: data.foil} ))
-
-
-//  /Arms
-app.get('/arms', (req,res) =>
-        res.render('person', {person: data.arms} ))
-
-//  /hog
-app.get('/hog', (req,res) =>
-        res.render('person', {person: data.hog} ))
 
 // /task 4, personlist
 app.get('/personlist', (req,res) =>
@@ -76,9 +69,7 @@ app.use(function (err, req, res, next) {
 });
 
 
-//Worksheet 3
-
-
+// Worksheet 3
 
 // /main page
 app.get('/',  (req, res) => {
@@ -103,6 +94,10 @@ app.get('/gay', (req,res) => {
     res.type('text/plain');
     res.send('Scaboosh, scabay, you now have the gay.');
 });
+
+
+
+
 
 // custom 404 page
 app.use( (req, res) => {
