@@ -53,7 +53,6 @@ app.get('/', function (req, res) {
 });
 
 
-
 // use view engine and display about
 app.get('/about', function (req, res) {
     res.render('about');
