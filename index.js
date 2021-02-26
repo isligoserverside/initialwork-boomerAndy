@@ -27,6 +27,16 @@ var data = {"foil" : { "name": "foil",
 "hog" : { "name": "hog",
         "imageurl": "/images/hogimage1.jpg"} }
 
+// Worksheet 7
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+app.get('/',  (req, res) => {
+    res.cookie ('tracking', true);
+    res.render('home');
+});
+
+
+
 
 // Worksheet 5a
 app.get('/personlist/:name', (req, res) => {
