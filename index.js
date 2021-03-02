@@ -15,7 +15,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 //  Worksheet 3 and 4 03/02/2021
-var data = {"foil" : { "name": "foil",
+/* var data = {"foil" : { "name": "foil",
          "dob": "01/01/1998",
         "imageurl": "/images/foilimage1.jpg",
         "hobbies": ["Jokes", "Gags", "Stand up"]},
@@ -25,7 +25,7 @@ var data = {"foil" : { "name": "foil",
        "imageurl": "/images/armsimage1.jpg"},
 
 "hog" : { "name": "hog",
-        "imageurl": "/images/hogimage1.jpg"} }
+        "imageurl": "/images/hogimage1.jpg"} } */
 
 // Worksheet 7
 const cookieParser = require('cookie-parser');
@@ -67,27 +67,26 @@ exports.home = (req, res) => {
 }); */
 
 
-  
+// consts from worksheet 8 pointing to base and route js
 
 const baseRouter = require('./routes/base');
 
 app.use ('/', baseRouter);
 
+const personlistRouter = require('./routes/personlist');
+
+app.use('/personlist', personlistRouter)
+
+
 // Worksheet 5a
-app.get('/personlist/:name', (req, res) => {
+/* app.get('/personlist/:name', (req, res) => {
     var name = req.params.name;
     res.render('person', { person: data[name] })
 })
 
 app.get('/personlist', (req,res) =>
     res.render('personlist', { personlist: data }))
-
-
-
-// /task 4, personlist
-app.get('/personlist', (req,res) =>
-    res.render('personlist', { personlist: data }))
-
+ */
 
 /*  // use view engine and file home as default route.
     //all moved to route/base.js
@@ -126,25 +125,6 @@ app.use(function (err, req, res, next) {
     res.type('text/plain');
     res.send('Covid Holiday Tours');
 }); */
-
-// /about
-app.get('/about',  (req, res) => {
-    res.type('text/plain');
-    res.send('About Our Holidays');
-});
-
-// /contact
-app.get('/contact',  (req, res) => {
-    res.type('text/plain');
-    res.send('Don\'t bother we never reply');
-});
-
-// my own page
-app.get('/gay', (req,res) => {
-    res.type('text/plain');
-    res.send('Scaboosh, scabay, you now have the gay.');
-});
-
 
 
 

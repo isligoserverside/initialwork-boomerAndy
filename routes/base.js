@@ -16,14 +16,26 @@ router.get('/',  (req, res) =>  {
 });
 
 // use view engine and display about
+//  /about
 router.get('/about', function (req, res) {
     res.render('about');
 });
 
 // use view engine and display contact us
+//  /contact
 router.get('/contact', function (req, res) {
     res.render('contact');
 });
+
+/* // Move staff/personlist to base.js
+router.get('/personlist/:name', (req, res) => {
+    var name = req.params.name;
+    res.render('person', { person: data[name] })
+})
+
+router.get('/personlist', (req,res) =>
+    res.render('personlist', { personlist: data }))
+ */
 
 //export router
 module.exports = router;
