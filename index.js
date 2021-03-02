@@ -29,12 +29,43 @@ var data = {"foil" : { "name": "foil",
 
 // Worksheet 7
 const cookieParser = require('cookie-parser');
-app.use(cookieParser());
-app.get('/',  (req, res) => {
+app.use(cookieParser("una is great"));
+
+exports.home = (req, res) => {
+    if (req.signedCookies.tracking) {
+      var dateLastVisit = req.signedCookies.tracking;
+      var message = "welcome back you last visited on :" + dateLastVisit;
+    }
+    else{
+      message = ""
+    }
+    var currentDate = new Date();
+    console.log (currentDate);
+    res.cookie('tracking',currentDate.toUTCString(), {signed : true});
+    res.render('home', {'message' : message})
+  }
+/* app.get('/',  (req, res) => {
     res.cookie ('tracking', true);
     res.render('home');
 });
+ */
+app.get('/',  (req, res) => {
 
+    var message = "";
+     
+    if (req.cookies.tracking){
+        var dateLastVisit = req.cookies.tracking;
+        var message = "Welcome back, you last visited on :" + dateLastVisit;
+    }
+
+    var currentDate = new Date();
+    res.cookie('tracking',currentDate.toUTCString());
+
+    res.render('home', {'message': message});
+});
+
+
+  
 
 
 
@@ -54,10 +85,10 @@ app.get('/personlist', (req,res) =>
     res.render('personlist', { personlist: data }))
 
 
-// use view engine and file home as default route.
+/* // use view engine and file home as default route.
 app.get('/', function (req, res) {
     res.render('home');
-});
+}); */
 
 
 // use view engine and display about
@@ -86,10 +117,10 @@ app.use(function (err, req, res, next) {
 // Worksheet 3
 
 // /main page
-app.get('/',  (req, res) => {
+/* app.get('/',  (req, res) => {
     res.type('text/plain');
     res.send('Covid Holiday Tours');
-});
+}); */
 
 // /about
 app.get('/about',  (req, res) => {
