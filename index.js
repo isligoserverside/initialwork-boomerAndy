@@ -49,7 +49,9 @@ exports.home = (req, res) => {
     res.render('home');
 });
  */
-app.get('/',  (req, res) => {
+
+// Code now in routes/base.js
+/* app.get('/',  (req, res) => {
 
     var message = "";
      
@@ -62,12 +64,14 @@ app.get('/',  (req, res) => {
     res.cookie('tracking',currentDate.toUTCString());
 
     res.render('home', {'message': message});
-});
+}); */
 
 
   
 
+const baseRouter = require('./routes/base');
 
+app.use ('/', baseRouter);
 
 // Worksheet 5a
 app.get('/personlist/:name', (req, res) => {
@@ -85,13 +89,14 @@ app.get('/personlist', (req,res) =>
     res.render('personlist', { personlist: data }))
 
 
-/* // use view engine and file home as default route.
+/*  // use view engine and file home as default route.
+    //all moved to route/base.js
 app.get('/', function (req, res) {
     res.render('home');
 }); */
 
 
-// use view engine and display about
+/* // use view engine and display about
 app.get('/about', function (req, res) {
     res.render('about');
 });
@@ -99,7 +104,7 @@ app.get('/about', function (req, res) {
 // use view engine and display contact us
 app.get('/contact', function (req, res) {
     res.render('contact');
-});
+}); */
 
 // // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {
