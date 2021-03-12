@@ -4,6 +4,24 @@ const testData = require('../lib/data.js');
 router.get('/', (req, res) =>
 res.render('personlist', { personlist: testData.getPeopleData() }));
 
+router.get('/addnew', (req, res) => {
+    let fname = req.query.firstname;
+    let sname = req.query.surname;
+    console.log('Date entered ' + fname + ' ' + sname);
+    let data = {}
+
+    res.render('personform', {firstname: fname, surname: sname})
+}
+)
+
+router.post('/addnew', (req,res) => {
+    let fname = req.body.firstname;
+    let sname = req.body.surname;
+    console.log('Data entered ' + fname + ' ' + sname);
+    res.render('personform', {firstname: fname, surname: sname})
+})
+
+
 router.get('/:name',  (req, res) => {
 
     var name = req.params.name;
