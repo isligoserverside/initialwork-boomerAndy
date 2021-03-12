@@ -27,6 +27,31 @@ router.get('/contact', function (req, res) {
     res.render('contact');
 });
 
+//  /worksheet 9
+//  /personform
+router.get('/personform', function (req, res) {
+    res.render('personform');
+});
+
+router.get('/addnew', (req, res) => {
+    let fname = req.query.firstname;
+    let sname = req.query.surname;
+    console.log('Date entered ' + fname + ' ' + sname);
+    let data = {}
+
+    res.render('personform', {firstname: fname, surname: sname})
+}
+)
+
+router.post('/addnew', (req,res) => {
+    let fname = req.body.firstname;
+    let sname = req.body.surname;
+    console.log('Data entered ' + fname + ' ' + sname);
+    res.render('personform', {firstname: fname, surname: sname})
+}
+)
+
+
 /* // Move staff/personlist to base.js
 router.get('/personlist/:name', (req, res) => {
     var name = req.params.name;
