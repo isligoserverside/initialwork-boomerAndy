@@ -26,6 +26,11 @@ exports.home = (req, res) => {
     res.cookie('tracking',currentDate.toUTCString(), {signed : true});
     res.render('home', {'message' : message})
   }
+  
+// middleware for parsing the body of Posts need this before you can use req.body
+
+app.use(express.urlencoded({ extended: true })) 
+
 
 const baseRouter = require('./routes/base');
 
@@ -35,9 +40,7 @@ const personlistRouter = require('./routes/personlist');
 
 app.use('/personlist', personlistRouter)
 
-// middleware for parsing the body of Posts need this before you can use req.body
 
-app.use(express.urlencoded({ extended: true })) 
 
 
 // // 404 catch-all handler (middleware)

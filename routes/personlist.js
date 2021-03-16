@@ -4,6 +4,12 @@ const testData = require('../lib/data.js');
 router.get('/', (req, res) =>
 res.render('personlist', { personlist: testData.getPeopleData() }));
 
+//  /worksheet 9
+//  /personform
+router.get('/personform', function (req, res) {
+    res.render('personform');
+});
+
 router.get('/addnew', (req, res) => {
     let fname = req.query.firstname;
     let sname = req.query.surname;
@@ -14,12 +20,19 @@ router.get('/addnew', (req, res) => {
 }
 )
 
-router.post('/addnew', (req,res) => {
+/* router.post('/addnew', (req,res) => {
     let fname = req.body.firstname;
     let sname = req.body.surname;
-    console.log('Data entered ' + fname + ' ' + sname);
+//    console.log('Data entered ' + fname + ' ' + sname);
     res.render('personform', {firstname: fname, surname: sname})
+}) */
+
+router.post('/addnew', (req, res) => {
+    console.log("Data send via post");
+    console.table(req.body);
+    res.redirect(303, 'personadded',)
 })
+ 
 
 
 router.get('/:name',  (req, res) => {

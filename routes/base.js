@@ -29,7 +29,7 @@ router.get('/contact', function (req, res) {
 
 //  /worksheet 9
 //  /personform
-router.get('/personform', function (req, res) {
+/* router.get('/personform', function (req, res) {
     res.render('personform');
 });
 
@@ -49,7 +49,7 @@ router.post('/addnew', (req,res) => {
     console.log('Data entered ' + fname + ' ' + sname);
     res.render('personform', {firstname: fname, surname: sname})
 }
-)
+) */
 
 
 /* // Move staff/personlist to base.js
