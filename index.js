@@ -2,6 +2,15 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+const session = require('express-session');
+
+app.use(session(
+    {secret: "una is great!!", 
+    cookie: { maxage: 6000},
+    resave: false,
+    saveUninitialized: false
+  }))
+
 app.use(express.static('public'));
 
 var handlebars = require('express-handlebars')
@@ -26,7 +35,7 @@ exports.home = (req, res) => {
     res.cookie('tracking',currentDate.toUTCString(), {signed : true});
     res.render('home', {'message' : message})
   }
-  
+
 // middleware for parsing the body of Posts need this before you can use req.body
 
 app.use(express.urlencoded({ extended: true })) 

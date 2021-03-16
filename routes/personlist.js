@@ -27,12 +27,30 @@ router.get('/addnew', (req, res) => {
     res.render('personform', {firstname: fname, surname: sname})
 }) */
 
-router.post('/addnew', (req, res) => {
+/* router.post('/addnew', (req, res) => {
     console.log("Data send via post");
     console.table(req.body);
     res.redirect(303, 'personadded',)
 })
- 
+  */
+
+router.post('/addnew', (req, res) => {
+    console.log("Data received from a post");
+    console.table(req.body);
+    req.session.staffdata = { name: req.body.firstname + " " + req.body.surname };
+    res.redirect(303, '/personlist/personadded')
+})
+
+router.get('/personadded', (req, res) => {
+
+    if (req.session.staffdata) {
+        var newName = req.session.staffdata.name;
+    }
+    else {
+        var newName = "";
+    }
+    res.render('personadded', { name: newName })
+})
 
 
 router.get('/:name',  (req, res) => {
