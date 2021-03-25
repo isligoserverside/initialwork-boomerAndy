@@ -36,9 +36,15 @@ exports.home = (req, res) => {
     res.render('home', {'message' : message})
   }
 
+  
 // middleware for parsing the body of Posts need this before you can use req.body
 
 app.use(express.urlencoded({ extended: true })) 
+
+// import our own Middleware
+
+const {flashMiddleware} = require('./lib/middleware.js');
+app.use(flashMiddleware);
 
 
 const baseRouter = require('./routes/base');

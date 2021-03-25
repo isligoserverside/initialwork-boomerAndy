@@ -34,12 +34,21 @@ router.get('/addnew', (req, res) => {
 })
   */
 
-router.post('/addnew', (req, res) => {
+/* router.post('/addnew', (req, res) => {
     console.log("Data received from a post");
     console.table(req.body);
     req.session.staffdata = { name: req.body.firstname + " " + req.body.surname };
     res.redirect(303, '/personlist/personadded')
+}) */
+
+router.post('/addnew', (req, res) => {
+    console.log("Data received from a  post");
+    console.table(req.body);
+    req.session.flash = 
+    { type: 'success', intro: 'Data Saved:', message:  "Data for <strong>" + req.body.firstname + " " + req.body.surname + "</strong> has been added"}
+    res.redirect(303, '/personlist')
 })
+
 
 router.get('/personadded', (req, res) => {
 
