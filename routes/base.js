@@ -17,9 +17,20 @@ router.get('/',  (req, res) =>  {
 
 // use view engine and display about
 //  /about
-router.get('/about', function (req, res) {
+/* router.get('/about', function (req, res) {
     res.render('about');
+}); */
+
+router.get('/about', (req, res) => {
+    res.render('about', {
+        tags: "about, background", linkdata:
+            [
+                { url: "itsligo.ie", text: '<strong> IT Sligo Web</strong>' },
+                { url: "www.irishtimes.ie", text: 'The Irish Times' }
+            ]
+    })
 });
+
 
 // use view engine and display contact us
 //  /contact
@@ -27,40 +38,7 @@ router.get('/contact', function (req, res) {
     res.render('contact');
 });
 
-//  /worksheet 9
-//  /personform
-/* router.get('/personform', function (req, res) {
-    res.render('personform');
-});
 
-router.get('/addnew', (req, res) => {
-    let fname = req.query.firstname;
-    let sname = req.query.surname;
-    console.log('Date entered ' + fname + ' ' + sname);
-    let data = {}
-
-    res.render('personform', {firstname: fname, surname: sname})
-}
-)
-
-router.post('/addnew', (req,res) => {
-    let fname = req.body.firstname;
-    let sname = req.body.surname;
-    console.log('Data entered ' + fname + ' ' + sname);
-    res.render('personform', {firstname: fname, surname: sname})
-}
-) */
-
-
-/* // Move staff/personlist to base.js
-router.get('/personlist/:name', (req, res) => {
-    var name = req.params.name;
-    res.render('person', { person: data[name] })
-})
-
-router.get('/personlist', (req,res) =>
-    res.render('personlist', { personlist: data }))
- */
 
 //export router
 module.exports = router;
